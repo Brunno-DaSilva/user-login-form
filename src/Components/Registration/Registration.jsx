@@ -190,10 +190,9 @@ const Registration = () => {
           Sign Up
         </button>
       </form>
-      <p>
+      <p className="hasAccount">
         Already registered?
-        <br />
-        <span className="line">
+        <span className="link">
           {/*put router link here*/}
           <a href="#">Sign In</a>
         </span>
