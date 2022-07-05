@@ -30,13 +30,20 @@ body {
 }
 
 .instructions {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
+  background: transparent;
+  color: rgb(77, 66, 66);
   padding: 0.25rem;
   position: relative;
   bottom: -10px;
+}
+
+.outline-red {
+  outline: 2px solid rgb(244, 134, 115);
+}
+.outline-green {
+  outline: 0.1rem solid hsl(167, 86%, 63%);
 }
 
 .instructions > svg {

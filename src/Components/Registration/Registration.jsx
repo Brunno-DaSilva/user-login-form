@@ -105,85 +105,80 @@ const Registration = () => {
       <h1>Registration</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
-          Username{" "}
-          <FontAwesomeIcon
-            icon={faCheck}
-            className={validName ? "valid" : "hide"}
+        <div className="input__holder">
+          <label htmlFor="username">
+            Username{" "}
+            <FontAwesomeIcon
+              icon={faCheck}
+              className={validName ? "valid" : "hide"}
+            />
+            <FontAwesomeIcon
+              icon={faTimes}
+              className={validName || !user ? "hide" : "invalid"}
+            />
+          </label>
+          <input
+            type="text"
+            id="username"
+            ref={userReff}
+            autoComplete="off"
+            onChange={(e) => setUser(e.target.value)}
+            aria-invalid={validName ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={() => setUserFocus(true)}
+            onBlur={() => setUserFocus(false)}
+            required
+            value={user}
+            className={!validName ? "outline-red" : "outline-green"}
           />
-          <FontAwesomeIcon
-            icon={faTimes}
-            className={validName || !user ? "hide" : "invalid"}
-          />
-        </label>
-        <input
-          type="text"
-          id="username"
-          ref={userReff}
-          autoComplete="off"
-          onChange={(e) => setUser(e.target.value)}
-          aria-invalid={validName ? "false" : "true"}
-          aria-describedby="uidnote"
-          onFocus={() => setUserFocus(true)}
-          onBlur={() => setUserFocus(false)}
-          required
-          value={user}
-        />
-        <p
-          id="uidnote"
-          className={
-            userFocus && user && !validName ? "instructions" : "offscreen"
-          }
-        >
-          <FontAwesomeIcon icon={faInfoCircle} />
-          4 to 24 characters.
-          <br />
-          Must begin with a letter.
-          <br />
-          Letters, numbers, underscores, hyphens allowed.
-        </p>
+          <p
+            id="uidnote"
+            className={
+              userFocus && user && !validName ? "instructions" : "offscreen"
+            }
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />4 to 24 characters. Must
+            begin with a letter. Letters, numbers, underscores, hyphens allowed.
+          </p>
+        </div>
+        <div className="input__holder">
+          <label htmlFor="password">
+            Password{" "}
+            <FontAwesomeIcon
+              icon={faCheck}
+              className={validPwd ? "valid" : "hide"}
+            />
+            <FontAwesomeIcon
+              icon={faTimes}
+              className={validPwd || !pwd ? "hide" : "invalid"}
+            />
+          </label>
 
-        <label htmlFor="password">
-          Password{" "}
-          <FontAwesomeIcon
-            icon={faCheck}
-            className={validPwd ? "valid" : "hide"}
+          <input
+            type="password"
+            id="password"
+            onChange={(e) => setPwd(e.target.value)}
+            required
+            value={pwd}
+            aria-invalid={validPwd ? "false" : "true"}
+            aria-describedby="pwdnote"
+            onFocus={() => setPwdFocus(true)}
+            onBlur={() => setPwdFocus(false)}
+            className={!validPwd ? "outline-red " : "outline-green"}
           />
-          <FontAwesomeIcon
-            icon={faTimes}
-            className={validPwd || !pwd ? "hide" : "invalid"}
-          />
-        </label>
-
-        <input
-          type="password"
-          id="password"
-          onChange={(e) => setPwd(e.target.value)}
-          required
-          value={pwd}
-          aria-invalid={validPwd ? "false" : "true"}
-          aria-describedby="pwdnote"
-          onFocus={() => setPwdFocus(true)}
-          onBlur={() => setPwdFocus(false)}
-        />
-        <p
-          id="pwdnote"
-          className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-        >
-          <FontAwesomeIcon icon={faInfoCircle} />
-          8 to 24 characters.
-          <br />
-          Must include uppercase and lowercase letters, a number and a special
-          character.
-          <br />
-          Allowed special characters:{" "}
-          <span aria-label="exclamation mark">!</span>{" "}
-          <span aria-label="at symbol">@</span>{" "}
-          <span aria-label="hashtag">#</span>{" "}
-          <span aria-label="dollar sign">$</span>{" "}
-          <span aria-label="percent">%</span>
-        </p>
-
+          <p
+            id="pwdnote"
+            className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />8 to 24 characters with
+            uppercase and lowercase, a number and a special character.
+            <span aria-label="exclamation mark">!</span>{" "}
+            <span aria-label="at symbol">@</span>{" "}
+            <span aria-label="hashtag">#</span>{" "}
+            <span aria-label="dollar sign">$</span>{" "}
+            <span aria-label="percent">%</span>
+          </p>
+        </div>
         <button
           disabled={!validName || !validPwd || !validMatch ? true : false}
         >
